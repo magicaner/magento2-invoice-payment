@@ -1,0 +1,51 @@
+<?php
+/**
+ * @copyright Copyright (c) Misha Medzhytov <mdg12v@gmail.com>, All rights reserved.
+ */
+
+// @codingStandardsIgnoreFile
+/**
+ * @var $block \Mdg\InvoicePayment\Block\Form\Invoice
+ */
+
+/** @var Magento\Sales\Model\Order $order */
+$order = $block->getOrder();
+
+/** @var \Mdg\InvoicePayment\Model\Payment\Invoice $paymentMethod */
+$paymentMethod = $order->getPayment()->getMethodInstance();
+?>
+<dl class="payment-method invoice">
+    <dt class="title"><?= __('Pay for the order with the bank details indicated below') ?></dt>
+    <dd class="content">
+        <table class="data">
+            <tr>
+                <td><?= __('IDN') ?> <?= $paymentMethod->getConfigData('settings/invoice_receiver_idn') ?></td>
+                <td><?= __('COR') ?> <?= $paymentMethod->getConfigData('settings/invoice_receiver_cor') ?></td>
+                <td rowspan="2">
+                    <?= __('Acc.#') ?>
+                </td>
+                <td rowspan="2">
+                    <?= $paymentMethod->getConfigData('settings/invoice_receiver_accnum') ?>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><?= __('Receiver') ?><br/>
+                    <?= $paymentMethod->getConfigData('settings/invoice_receiver_name') ?>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" rowspan="2"><?= __('Receiver bank') ?><br/>
+                    <?= $paymentMethod->getConfigData('settings/invoice_receiver_bank_name') ?></td>
+                <td>
+                    <?= __('BIN') ?>
+                </td>
+                <td>
+                    <?= $paymentMethod->getConfigData('settings/invoice_receiver_bank_bin') ?></td>
+            </tr>
+            <tr>
+                <td><?= __('Acc.#') ?></td>
+                <td><?= $paymentMethod->getConfigData('settings/invoice_receiver_bank_accnum') ?></td>
+            </tr>
+        </table>
+    </dd>
+</dl>

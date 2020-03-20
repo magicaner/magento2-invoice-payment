@@ -1,0 +1,19 @@
+<?php
+/**
+ * @copyright Copyright (c) Misha Medzhytov <mdg12v@gmail.com>, All rights reserved.
+ */
+
+// @codingStandardsIgnoreFile
+/** @var $block \Mdg\InvoicePayment\Block\Form\Invoice */
+/** @var Magento\Sales\Model\Order $order */
+/** @var Magento\Framework\View\TemplateEngine\Php $this */
+$order = $block->getInfo()->getOrder();
+
+/** @var \Mdg\InvoicePayment\Model\Payment\Invoice $methodInstance */
+$methodInstance = $order->getPayment()->getMethodInstance();
+?>
+<?= $block->escapeHtml($block->getMethod()->getTitle()) ?>
+<p><a href="<?= $block->getFrontendUrl('print/sales/order', ['order_id' => $order->getIncrementId(), '_scope' => $order->getStoreId()]) ?>">
+        <img style="vertical-align: bottom" src='<?php echo $block->getViewFileUrl('Mdg_InvoicePayment::images/icon-pdf.png',  ['_scope' => $order->getStoreId()]); ?>' /> <?= __('Download invoice PDF') ?>
+    </a>
+</p>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @copyright Copyright (c) Misha Medzhytov <mdg12v@gmail.com>, All rights reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <mdg_invoice>
+                <active>1</active>
+                <model>Mdg\InvoicePayment\Model\Payment\Invoice</model>
+                <order_status>pending</order_status>
+                <title>Pay By Invoice</title>
+                <allowspecific>0</allowspecific>
+                <group>offline</group>
+                <instructions><![CDATA[After placing the order, you will be given a link to download the invoice for payment. Also, the download link will be available in the mail.]]></instructions>
+                <invoice_instructions><![CDATA[At the link below you can download the invoice for payment. Please indicate the order number in the comments on the payment form, this will give us the opportunity to place an order faster.]]></invoice_instructions>
+                <payment_action>order</payment_action>
+            </mdg_invoice>
+        </payment>
+    </default>
+</config>
